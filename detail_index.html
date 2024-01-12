@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./detail_style.css"></link>
   <script src="./detail_main.js" type="module"></script>
-  <title>Document</title>
+  <title>영화 세부 정보 페이지</title>
 
 </head>
 <body>
   <ul class="grid">
     <li>Home</li>
   </ul>
-  <button id="btn" onclick="watchMovie()">btn 검사</button>
   <div>
-    <img id="moviePoster" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3weHvdbJ9RiSNHS0cz5694fkAnk.jpg" alt="">
+    <img id="moviePoster" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
   </div>
   <div>
     <h1 id="movieTitle">Movie Title</h1>
