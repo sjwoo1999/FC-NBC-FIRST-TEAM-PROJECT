@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const urlPopular = "https://api.themoviedb.org/3/movie/popular?language=ko&page=1";
     const response = await fetch(urlPopular, options);
     const data = await response.json();
+
+    localStorage.setItem("movieData", JSON.stringify(data));
+
     return data.results;
   }
 
@@ -49,7 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //   검색기능
 const searchInput = document.querySelector("#search-input");
-searchInput.focus();
+if (searchInput) {
+  searchInput.focus();
+} else {
+  // search-input 요소가 존재하지 않습니다.
+}
 
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", (event) => {
