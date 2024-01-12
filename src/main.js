@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MmFjMDczZmM2NGZhZGE5YTMxNTU1MzlkNWYzMGViZCIsInN1YiI6IjY1OTc3Yzc4NTkwN2RlNTQ2ZTYzYzA3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UicVG0R1cpvWhApW9lCa5MASIhIm99FNmHtVGJ6mIjU"
       }
     };
-    const urlPopular = "https://api.themoviedb.org/3/movie/popular?language=ko&page=1"
+    const urlPopular = "https://api.themoviedb.org/3/movie/popular?language=ko&page=1";
     const response = await fetch(urlPopular, options);
     const data = await response.json();
     return data.results;
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (card) {
         alert(`영화 id: ${card.id}`);
+        window.location.href = "detail_index.html";
       }
     }
   }
