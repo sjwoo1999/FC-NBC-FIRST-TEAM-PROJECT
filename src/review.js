@@ -1,29 +1,34 @@
 // 리뷰 추가 함수
 function addReview() {
-  const author = document.getElementById("author").value;
+  const user = document.getElementById("user").value;
   const password = document.getElementById("password").value;
   const rating = document.getElementById("rating").value;
   const comment = document.getElementById("comment").value;
 
   // 유효성 검사
-  if (!author || !password || !rating || !comment) {
-    alert("모든 필드를 입력해주세요.");
+  if (!user || !password || !rating || !comment) {
+    alert("전부 입력해주세효!");
     return;
   }
 
   if (password.length < 4) {
-    alert("비밀번호는 최소 4자리 이상이어야 합니다.");
+    alert("비번은 4자리 이상 쓰세효!");
     return;
   }
 
   if (rating < 1 || rating > 5) {
-    alert("평점은 1에서 5 사이의 값을 입력해주세요.");
+    alert("평점은 1에서 5 사이만!");
+    return;
+  }
+
+  if (comment.length >= 500) {
+    alert("글자수 최대 500자임!");
     return;
   }
 
   // 리뷰 객체 생성
   const review = {
-    author: author,
+    user: user,
     password: password,
     rating: rating,
     comment: comment,
@@ -40,7 +45,7 @@ function addReview() {
   localStorage.setItem("reviews", JSON.stringify(existingReviews));
 
   // 리뷰 목록 갱신
-  displayReviews();
+  showReviews();
 
   // 리뷰 작성 필드 초기화
   document.getElementById("add-review-form").reset();
@@ -55,12 +60,12 @@ function editReview(index) {
   const existingReviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
   if (password === existingReviews[index].password) {
-    const newAuthor = prompt("수정할 작성자를 입력하세요 (현재: " + existingReviews[index].author + "):");
+    const newuser = prompt("수정할 작성자를 입력하세요 (현재: " + existingReviews[index].user + "):");
     const newRating = prompt("수정할 평점을 입력하세요 (현재: " + existingReviews[index].rating + "):");
     const newComment = prompt("수정할 리뷰를 입력하세요 (현재: " + existingReviews[index].comment + "):");
 
     // 유효성 검사
-    if (!newAuthor || !newRating || !newComment) {
+    if (!newuser || !newRating || !newComment) {
       alert("모든 필드를 입력해주세요.");
       return;
     }
@@ -70,8 +75,13 @@ function editReview(index) {
       return;
     }
 
+    if (newComment.length >= 500) {
+      alert("글자수 최대 500자임!");
+      return;
+    }
+
     // 수정된 리뷰 업데이트
-    existingReviews[index].author = newAuthor;
+    existingReviews[index].user = newuser;
     existingReviews[index].rating = newRating;
     existingReviews[index].comment = newComment;
 
@@ -79,7 +89,7 @@ function editReview(index) {
     localStorage.setItem("reviews", JSON.stringify(existingReviews));
 
     // 리뷰 목록 갱신
-    displayReviews();
+    showReviews();
   } else {
     alert("비밀번호가 틀렸습니다.");
   }
@@ -93,14 +103,14 @@ function deleteReview(index) {
   if (password === existingReviews[index].password) {
     existingReviews.splice(index, 1);
     localStorage.setItem("reviews", JSON.stringify(existingReviews));
-    displayReviews();
+    showReviews();
   } else {
     alert("비밀번호가 틀렸습니다.");
   }
 }
 
 // 누적된 리뷰 표시 함수
-function displayReviews() {
+function showReviews() {
   const reviewsContainer = document.getElementById("reviews-list");
   reviewsContainer.innerHTML = "";
 
@@ -112,7 +122,7 @@ function displayReviews() {
     const reviewElement = document.createElement("div");
     reviewElement.classList.add("review");
     reviewElement.innerHTML = `
-        <strong>${review.author}</strong> 님의 평점: ${review.rating} (${formatTimestamp(review.timestamp)})<br>
+        <strong>${review.user}</strong> 님의 평점: ${review.rating} (${formatTimestamp(review.timestamp)})<br>
         ${review.comment}<br>
         <button type="button" onclick="editReview(${index})">수정</button>
         <button type="button" onclick="deleteReview(${index})">삭제</button>
@@ -121,7 +131,7 @@ function displayReviews() {
   });
 }
 
-// 타임스탬프를 원하는 형식으로 포맷팅하는 함수
+// 타임스탬프 포맷
 function formatTimestamp(timestamp) {
   const options = {
     year: "numeric",
@@ -151,4 +161,4 @@ function closeReviewModal() {
 }
 
 // 페이지 로드 시 누적된 리뷰 표시
-document.addEventListener("DOMContentLoaded", displayReviews);
+document.addEventListener("DOMContentLoaded", showReviews);
