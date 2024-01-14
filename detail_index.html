@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./detail_style.css"></link>
-  <script src="./detail_main.js" type="module"></script>
+  <link href="./style/detail_style.css"></link>
   <title>영화 세부 정보 페이지</title>
 
 </head>
@@ -38,5 +37,7 @@
   <div>
     <h1>영화 리뷰</h1>
   </div>
+    <!--script 태그가 body 요소 전에 위치하면 DOMContentLoaded 이벤트가 발생하기 전에 스크립트가 실행될 수 있음.-->
+    <script defer src="./src/detail_main.js" type="module"></script>
 </body>
 </html>

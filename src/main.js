@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await response.json();
 
     localStorage.setItem("movieData", JSON.stringify(data));
+    // mainPage default currentMovieId 값 : 0
+    localStorage.setItem("currentMovieId", "0");
 
     return data.results;
   }
@@ -43,7 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (card) {
         alert(`영화 id: ${card.id}`);
-        window.location.href = "detail_index.html";
+
+        // 현재 영화 아이디
+        localStorage.setItem("currentMovieId", card.id);
+
+        window.location.href = "detail_index.html?index=" + card.id;
       }
     }
   }
