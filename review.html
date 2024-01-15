@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리뷰 페이지</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <h1>리뷰 페이지</h1>
+
+    <!-- 리뷰 작성 버튼 -->
+    <button type="button" id="openReviewModalBtn">리뷰 작성</button>
+
+    <!-- 모달 창 -->
+    <div id="modal-overlay"></div>
+    <div id="modal">
+      <h2>리뷰 작성</h2>
+      <form id="add-review-form">
+        <label for="user">작성자:</label>
+        <input type="text" id="user" required />
+        <br />
+        <label for="password">확인 비밀번호:</label>
+        <input type="password" id="password" required />
+        <br />
+        <label for="rating">평점:</label>
+        <input type="number" id="rating" min="1" max="5" required />
+        <br />
+        <label for="comment">리뷰:</label>
+        <textarea id="comment" required></textarea>
+        <br />
+        <button type="submit">리뷰 작성</button>
+      </form>
+      <button type="button" id="closeReviewModalBtn">닫기</button>
+    </div>
+
+    <!-- 누적된 리뷰 표시 -->
+    <div id="reviews-container">
+      <h2>누적된 리뷰</h2>
+      <div id="reviews-list"></div>
+    </div>
+
+    <script src="src/review.js"></script>
+  </body>
+</html>
