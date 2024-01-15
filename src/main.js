@@ -17,13 +17,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await response.json();
 
     localStorage.setItem("movieData", JSON.stringify(data));
-    // mainPage default currentMovieId 값 : 0
-    localStorage.setItem("currentMovieId", "0");
+
+    localStorage.setItem("adult", "");
+    localStorage.setItem("backdrop_path", "");
+    localStorage.setItem("genre_ids", "");
+    localStorage.setItem("id", "");
+    localStorage.setItem("original_language", "");
+    localStorage.setItem("original_title", "");
+    localStorage.setItem("overview", "");
+    localStorage.setItem("popularity", "");
+    localStorage.setItem("poster_path", "");
+    localStorage.setItem("release_date", "");
+    localStorage.setItem("video", "");
+    localStorage.setItem("vote_average", "");
+    localStorage.setItem("vote_count", "");
+
+    console.log(data.results);
 
     return data.results;
   }
 
-  //   카드 생성
+  // 카드 생성
   async function generateMovieCards() {
     const movies = await fetchMovieData();
     const cardList = document.querySelector("#card-list");
@@ -48,10 +62,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = target.closest(".movie-card");
 
       if (card) {
-        alert(`영화 id: ${card.id}`);
+        alert(card + `영화 id: ${card.id}`);
 
-        // 현재 영화 아이디
-        localStorage.setItem("currentMovieId", card.id);
+        console.log("card.adult : " + card.adult);
+        console.log("card.backdrop_path : " + card.backdrop_path);
+        console.log("card.genre_ids : " + card.genre_ids);
+        console.log("card.id : " + card.id);
+        console.log("card.original_language : " + card.original_language);
+        console.log("card.original_title : " + card.original_title);
+        console.log("card.overview : " + card.overview);
+        console.log("card.popularity : " + card.popularity);
+        console.log("card.poster_path : " + card.poster_path);
+        console.log("card.release_date : " + card.release_date);
+        console.log("card.title : " + card.title);
+        console.log("card.video : " + card.video);
+        console.log("card.vote_average : " + card.vote_average);
+        console.log("card.vote_count : " + card.vote_count);
+
+        localStorage.setItem("adult", card.adult);
+        localStorage.setItem("backdrop_path", card.backdrop_path);
+        localStorage.setItem("genre_ids", card.genre_ids);
+        localStorage.setItem("id", card.id);
+        localStorage.setItem("original_language", card.original_language);
+        localStorage.setItem("original_title", card.original_title);
+        localStorage.setItem("overview", card.overview);
+        localStorage.setItem("popularity", card.popularity);
+        localStorage.setItem("poster_path", card.poster_path);
+        localStorage.setItem("release_date", card.release_date);
+        localStorage.setItem("title", card.title);
+        localStorage.setItem("video", card.video);
+        localStorage.setItem("vote_average", card.vote_average);
+        localStorage.setItem("vote_count", card.vote_count);
 
         window.location.href = "detail_index.html?index=" + card.id;
       }
