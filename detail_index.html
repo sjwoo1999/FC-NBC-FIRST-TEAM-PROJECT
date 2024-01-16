@@ -3,15 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./style/detail_style.css"></link>
+  <link rel="stylesheet" href="./style/detail_style.css"></link>
   <title>영화 세부 정보 페이지</title>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
   <ul class="grid">
     <li>Home</li>
+    
   </ul>
-  <ul id="currentMovie"></ul>
+  <ul id="currentMovie">
+    <img id="moviePoster" src="" alt="">
+    <li id="movieTitle">Movie Title</li>
+    <li id="subtitle">Subtitle/Origintitle</li>
+    <li id="release">개봉일</li>
+    <li id="rating">평점 4.5</li>
+    <li id="ganre">장르</li>
+    <li id="overview">개요</li>
+    <li id="cast">출연진</li>
+    
+    <ul class="grid2">
+      <img src="" alt="">
+      <li id="castName">name</li>
+      <li id="castingName">배역</li>
+    </ul>
+  </ul>
+  <h1>리뷰 페이지</h1>
+
+    <!-- 리뷰 작성 버튼 -->
+    <button type="button" id="openReviewModalBtn">리뷰 작성</button>
+
+    <!-- 모달 창 -->
+    <div id="modal-overlay"></div>
+    <div id="modal">
+      <h2>리뷰 작성</h2>
+      <form id="add-review-form">
+        <label for="user">작성자:</label>
+        <input type="text" id="user" required />
+        <br />
+        <label for="password">확인 비밀번호:</label>
+        <input type="password" id="password" required />
+        <br />
+        <label for="modal-rating">평점:</label>
+        <input type="number" id="modal-rating" min="1" max="5" required />
+        <br />
+        <label for="comment">리뷰:</label>
+        <textarea id="comment" required></textarea>
+        <br />
+        <button type="submit">리뷰 작성</button>
+      </form>
+      <button type="button" id="closeReviewModalBtn">닫기</button>
+    </div>
+
+    <!-- 누적된 리뷰 표시 -->
+    <div id="reviews-container">
+      <h2>누적된 리뷰</h2>
+      <div id="reviews-list"></div>
+    </div>
+
+    <script src="src/review.js"></script>
   <script defer src="./src/detail_main.js" type="module"></script>
 </body>
 </html>
