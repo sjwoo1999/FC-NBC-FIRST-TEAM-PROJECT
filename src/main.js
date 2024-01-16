@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const response = await fetch(urlPopular, options);
     const data = await response.json();
 
-    localStorage.setItem("movieData", JSON.stringify(data));
-
     console.log(data.results);
 
-    initializeLocalStorage();
+    // initializeLocalStorage();
+
+    localStorage.setItem("movieData", JSON.stringify(data));
 
     localStorage.setItem(`adult`, "");
     localStorage.setItem(`backdrop_path`, "");
@@ -41,14 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(`video`, "");
     localStorage.setItem(`vote_average`, "");
     localStorage.setItem(`vote_count`, "");
-
-    let countUndefined = 0;
-
-    for (let i = 0; i < localStorage.length; i++) {
-      if (typeof localStorage[i] === undefined) countUndefined++;
-    }
-
-    console.log(countUndefined);
 
     return data.results;
   }
@@ -83,64 +75,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 일단 다 넘기고 나중에 undefined만 거르는 것도 가능하겠지만 일단 이렇게~
 
-        /*
+        // // 객체 생성
+        // const movie = {
+        //   adult: `${card.adult}`,
+        //   backdrop_path: `${card.backdrop_path}`,
+        //   genre_ids: `${card.genre_ids}`,
+        //   id: `${card.id}`,
+        //   original_language: `${card.original_language}`,
+        //   original_title: `${card.original_title}`,
+        //   overview: `${card.overview}`,
+        //   popularity: `${card.popularity}`,
+        //   poster_path: `${card.poster_path}`,
+        //   release_date: `${card.release_date}`,
+        //   video: `${card.video}`,
+        //   vote_average: `${card.vote_average}`,
+        //   vote_count: `${card.vote_count}`
+        // };
+
+        // // JSON 문자열로 변환
+        // const movieJson = JSON.stringify(movie);
+
+        // // 로컬스토리지에 저장
+        // localStorage.setItem("movie", movieJson);
 
         if (card.adult) {
           localStorage.setItem("adult", card.adult);
+        } else {
+          localStorage.setItem("adult", "");
         }
 
         if (card.backdrop_path) {
           localStorage.setItem("backdrop_path", card.backdrop_path);
+        } else {
+          localStorage.setItem("backdrop_path", "");
         }
 
         if (card.genre_ids) {
           localStorage.setItem("genre_ids", card.genre_ids);
+        } else {
+          localStorage.setItem("genre_ids", "");
         }
 
         if (card.id) {
-          localStorage.setItem(`id`, card.id);
+          localStorage.setItem("id", card.id);
+        } else {
+          localStorage.setItem("id", "");
         }
 
         if (card.original_language) {
           localStorage.setItem("original_language", card.original_language);
+        } else {
+          localStorage.setItem("original_language", "");
         }
 
         if (card.original_title) {
           localStorage.setItem("original_title", card.original_title);
+        } else {
+          localStorage.setItem("original_title", "");
         }
 
         if (card.overview) {
           localStorage.setItem("overview", card.overview);
+        } else {
+          localStorage.setItem("overview", "");
         }
 
         if (card.popularity) {
           localStorage.setItem("popularity", card.popularity);
+        } else {
+          localStorage.setItem("popularity", "");
         }
 
         if (card.poster_path) {
           localStorage.setItem("poster_path", card.poster_path);
+        } else {
+          localStorage.setItem("poster_path", "");
         }
 
         if (card.release_date) {
           localStorage.setItem("release_date", card.release_date);
+        } else {
+          localStorage.setItem("poster_path", "");
         }
 
         if (card.video) {
           localStorage.setItem("video", card.video);
+        } else {
+          localStorage.setItem("poster_path", "");
         }
 
         if (card.vote_average) {
           localStorage.setItem("vote_average", card.vote_average);
+        } else {
+          localStorage.setItem("vote_average", "");
         }
 
         if (card.vote_count) {
           localStorage.setItem("vote_count", card.vote_count);
-        }
-        */
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          const value = JSON.parse(localStorage.getItem(key));
+        } else {
+          localStorage.setItem("vote_count", "");
         }
 
         window.location.href = "detail_index.html?index=" + card.id;
