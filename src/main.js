@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = target.closest(".movie-card");
 
       if (card) {
-
         alert(card + `영화 id: ${card.id}`);
 
         localStorage.setItem("adult", card.adult);
@@ -164,4 +163,3 @@ async function handleSearch(searchKeyword) {
 //     handleSearch(searchInput.value);
 //   });
 // });
-
