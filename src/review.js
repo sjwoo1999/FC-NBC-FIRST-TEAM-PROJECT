@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function addReview() {
   const user = document.getElementById("user").value;
   const password = document.getElementById("password").value;
-  const rating = document.getElementById("rating").value;
+  const rating = document.getElementById("modal-rating").value;
   const comment = document.getElementById("comment").value;
 
   // 유효성 검사 필드값, 비밀번호, 평점, 글자수 제한

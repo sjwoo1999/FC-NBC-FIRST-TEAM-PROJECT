@@ -63,8 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <li class="movie-card" id=${movie.id}>
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
             <h3 class="movie-title">${movie.title}</h3>
-            <p>${movie.overview}</p>
-            <p>Rating: ${movie.vote_average}</p>
+            <p id=vote_average>${movie.vote_average}</p>
           </li>`
       )
       .join("");
@@ -77,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = target.closest(".movie-card");
 
       if (card) {
-
         alert(card + `영화 id: ${card.id}`);
 
         localStorage.setItem("adult", card.adult);
@@ -165,4 +163,3 @@ async function handleSearch(searchKeyword) {
 //     handleSearch(searchInput.value);
 //   });
 // });
-

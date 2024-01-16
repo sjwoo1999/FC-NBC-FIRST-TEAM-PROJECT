@@ -4,106 +4,145 @@ h2,
 h3,
 p,
 ul {
-    margin: 0;
-    padding: 7px;
+  margin: 0;
+  padding: 7px;
 }
-li {padding: 14px;}
+li {
+  padding: 14px;
+}
 
 /* 배경설정 */
 body {
-    background: -webkit-linear-gradient(to top, gray, white);
-    background: linear-gradient(to top, gray, white);
+  background: -webkit-linear-gradient(to top, gray, white);
+  background: linear-gradient(to top, gray, white);
 
-    font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 /* 메뉴창 */
 ul.grid {
-    background-color: rgb(34, 34, 34);
-    overflow: hidden;
+  background-color: rgb(34, 34, 34);
+  overflow: hidden;
 }
 
 ul.grid li {
-    display: inline;
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    float: left;
+  display: inline;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
 }
 
 /* 그리드 컨테이너 (currentMovie)*/
 #currentMovie {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://www.walkerhillstory.com/wp-content/uploads/2020/09/2-1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 10px;
-    height: 100vh auto;
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://www.walkerhillstory.com/wp-content/uploads/2020/09/2-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  height: 100vh auto;
 }
 #moviePoster {
-    max-width: 450px;
-    max-height: 650px;
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-    justify-self: center; 
-    align-self: center; 
+  max-width: 450px;
+  max-height: 650px;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  justify-self: center;
+  align-self: center;
 }
 .info {
-    color: white;
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    padding: 20px;
+  color: white;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 .grid2 {
-    display: flex;
+  display: flex;
 }
 
-
 /* 오른쪽박스 */
-
 
 h1,
 h2,
 h3,
 p {
-    color: rgb(138, 136, 136);
+  color: rgb(138, 136, 136);
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 #release,
 #rating,
 #genre {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* 출연진 카드영역 */
 h3 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #cast {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 #castImg {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
 
 /* 리뷰섹션 */
 h1 {
-    color: rgb(138, 136, 136);
-    margin-top: 30px;
+  color: rgb(138, 136, 136);
+  margin-top: 30px;
+}
+
+/* Review */
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#review-form {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+#reviews-container {
+  max-width: 600px;
+}
+
+.review {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
 }
